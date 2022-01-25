@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="78b28e9bc26c41d8ae8794e8a51b25f1" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="DatabaseModel.Branch" Width="1.5" PointX="2.625" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Company" Width="1.5" PointX="6.5" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Location" Width="1.5" PointX="6.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Notice" Width="1.5" PointX="2.875" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Post" Width="1.5" PointX="0.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Register" Width="1.5" PointX="3.625" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Schedule" Width="1.5" PointX="6.5" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.Status" Width="1.5" PointX="3.625" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseModel.User" Width="1.5" PointX="0.5" PointY="3.875" IsExpanded="true" />
+        <AssociationConnector Association="DatabaseModel.FK_User_Branch" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Location_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Schedule_Comapany" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Status_Company" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Notice_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Post_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Registers_Schedule" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Registers_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseModel.FK_Status_User" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DatabaseModel.MyView" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="DatabaseModel.PostView" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="DatabaseModel.BranchwiseByYearView" Width="1.5" PointX="9.375" PointY="4.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
