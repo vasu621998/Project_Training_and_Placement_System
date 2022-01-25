@@ -1,0 +1,841 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="bid" />
+          </Key>
+          <Property Name="bid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="bname" Type="varchar" MaxLength="50" />
+          <Property Name="hod" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cname" Type="varchar" MaxLength="50" />
+          <Property Name="phone" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="website" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="lid" />
+          </Key>
+          <Property Name="lid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="location" Type="varchar(max)" Nullable="false" />
+          <Property Name="cid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Notice">
+          <Key>
+            <PropertyRef Name="nid" />
+          </Key>
+          <Property Name="nid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uuid" Type="varchar" MaxLength="50" />
+          <Property Name="notice_date" Type="date" />
+          <Property Name="description" Type="varchar(max)" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+          <Property Name="exp_date" Type="date" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="pid" />
+          </Key>
+          <Property Name="pid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uuid" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="varchar(max)" />
+          <Property Name="post_date" Type="date" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Registers">
+          <Key>
+            <PropertyRef Name="rid" />
+          </Key>
+          <Property Name="rid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uuid" Type="varchar" MaxLength="50" />
+          <Property Name="sid" Type="int" />
+          <Property Name="active" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cid" Type="int" />
+          <Property Name="package" Type="float" />
+          <Property Name="visit_date" Type="date" />
+          <Property Name="deadline" Type="date" />
+          <Property Name="min_cpi" Type="float" />
+          <Property Name="backlog" Type="varchar" MaxLength="50" />
+          <Property Name="vacancy" Type="int" />
+          <Property Name="hrname" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="stid" />
+          </Key>
+          <Property Name="stid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uuid" Type="varchar" MaxLength="50" />
+          <Property Name="cid" Type="int" />
+          <Property Name="package" Type="float" />
+          <Property Name="palced_date" Type="date" />
+          <Property Name="placed" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="uuid" />
+          </Key>
+          <Property Name="uid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="uuid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fname" Type="varchar" MaxLength="50" />
+          <Property Name="mname" Type="varchar" MaxLength="50" />
+          <Property Name="lname" Type="varchar" MaxLength="50" />
+          <Property Name="imageurl" Type="varchar(max)" />
+          <Property Name="mobile" Type="varchar" MaxLength="50" />
+          <Property Name="email" Type="varchar" MaxLength="50" />
+          <Property Name="dob" Type="date" />
+          <Property Name="bid" Type="int" Nullable="false" />
+          <Property Name="rollno" Type="varchar" MaxLength="50" />
+          <Property Name="password" Type="varchar" MaxLength="50" />
+          <Property Name="cpi" Type="float" />
+          <Property Name="backlog" Type="varchar" MaxLength="50" />
+          <Property Name="address" Type="varchar(max)" />
+          <Property Name="security_q_a" Type="varchar" MaxLength="20" />
+          <Property Name="role" Type="varchar" MaxLength="50" />
+          <Property Name="active" Type="varchar" MaxLength="50" />
+          <Property Name="batch" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'F:\SE PROJECT\MAIN-PROJECT\TRAINING_AND_PLACEMENT_PORTAL(WORKING 3)\TRAINING_AND_PLACEMENT_PORTAL\APP_DATA\DATABASE1.MDF.dbo.BranchwiseByYearView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BranchwiseByYearView">
+          <Key>
+            <PropertyRef Name="bid" />
+          </Key>
+          <Property Name="bname" Type="varchar" MaxLength="50" />
+          <Property Name="bid" Type="int" Nullable="false" />
+          <Property Name="batch" Type="int" />
+          <Property Name="total" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'F:\SE PROJECT\MAIN-PROJECT\TRAINING_AND_PLACEMENT_PORTAL(WORKING 3)\TRAINING_AND_PLACEMENT_PORTAL\APP_DATA\DATABASE1.MDF.dbo.MyView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MyView">
+          <Key>
+            <PropertyRef Name="uuid" />
+          </Key>
+          <Property Name="uuid" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="fname" Type="varchar" MaxLength="50" />
+          <Property Name="mname" Type="varchar" MaxLength="50" />
+          <Property Name="lname" Type="varchar" MaxLength="50" />
+          <Property Name="rollno" Type="varchar" MaxLength="50" />
+          <Property Name="imageurl" Type="varchar(max)" />
+          <Property Name="active" Type="varchar" MaxLength="50" />
+          <Property Name="sid" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'F:\SE PROJECT\MAIN-PROJECT\TRAINING_AND_PLACEMENT_PORTAL(WORKING 3)\TRAINING_AND_PLACEMENT_PORTAL\APP_DATA\DATABASE1.MDF.dbo.PostView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="PostView">
+          <Key>
+            <PropertyRef Name="pid" />
+          </Key>
+          <Property Name="fname" Type="varchar" MaxLength="50" />
+          <Property Name="lname" Type="varchar" MaxLength="50" />
+          <Property Name="pid" Type="int" Nullable="false" />
+          <Property Name="uuid" Type="varchar" MaxLength="50" />
+          <Property Name="description" Type="varchar(max)" />
+          <Property Name="post_date" Type="date" />
+          <Property Name="title" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_Location_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="cid" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="cid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notice_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="uuid" />
+            </Principal>
+            <Dependent Role="Notice">
+              <PropertyRef Name="uuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Post_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="uuid" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="uuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registers_Schedule">
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="0..1" />
+          <End Role="Registers" Type="Self.Registers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Registers">
+              <PropertyRef Name="sid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registers_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Registers" Type="Self.Registers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="uuid" />
+            </Principal>
+            <Dependent Role="Registers">
+              <PropertyRef Name="uuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Comapany">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="cid" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="cid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Status" Type="Self.Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="cid" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="cid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Status" Type="Self.Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="uuid" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="uuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Branch">
+          <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="bid" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="bid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabaseModelStoreContainer">
+          <EntitySet Name="Branch" EntityType="Self.Branch" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Location" EntityType="Self.Location" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Notice" EntityType="Self.Notice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Post" EntityType="Self.Post" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Registers" EntityType="Self.Registers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BranchwiseByYearView" EntityType="Self.BranchwiseByYearView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BranchwiseByYearView].[bname] AS [bname], 
+    [BranchwiseByYearView].[bid] AS [bid], 
+    [BranchwiseByYearView].[batch] AS [batch], 
+    [BranchwiseByYearView].[total] AS [total]
+    FROM [dbo].[BranchwiseByYearView] AS [BranchwiseByYearView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="MyView" EntityType="Self.MyView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MyView].[uuid] AS [uuid], 
+    [MyView].[fname] AS [fname], 
+    [MyView].[mname] AS [mname], 
+    [MyView].[lname] AS [lname], 
+    [MyView].[rollno] AS [rollno], 
+    [MyView].[imageurl] AS [imageurl], 
+    [MyView].[active] AS [active], 
+    [MyView].[sid] AS [sid]
+    FROM [dbo].[MyView] AS [MyView]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PostView" EntityType="Self.PostView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PostView].[fname] AS [fname], 
+    [PostView].[lname] AS [lname], 
+    [PostView].[pid] AS [pid], 
+    [PostView].[uuid] AS [uuid], 
+    [PostView].[description] AS [description], 
+    [PostView].[post_date] AS [post_date], 
+    [PostView].[title] AS [title]
+    FROM [dbo].[PostView] AS [PostView]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Location_Company" Association="Self.FK_Location_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Location" EntitySet="Location" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notice_User" Association="Self.FK_Notice_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Notice" EntitySet="Notice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Post_User" Association="Self.FK_Post_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Post" EntitySet="Post" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registers_Schedule" Association="Self.FK_Registers_Schedule">
+            <End Role="Schedule" EntitySet="Schedule" />
+            <End Role="Registers" EntitySet="Registers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registers_User" Association="Self.FK_Registers_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Registers" EntitySet="Registers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Comapany" Association="Self.FK_Schedule_Comapany">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_Company" Association="Self.FK_Status_Company">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Status" EntitySet="Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_User" Association="Self.FK_Status_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Status" EntitySet="Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Branch" Association="Self.FK_User_Branch">
+            <End Role="Branch" EntitySet="Branch" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Branch">
+          <Key>
+            <PropertyRef Name="bid" />
+          </Key>
+          <Property Name="bid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="bname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="hod" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_User_Branch" FromRole="Branch" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="cid" />
+          </Key>
+          <Property Name="cid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="website" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Locations" Relationship="Self.FK_Location_Company" FromRole="Company" ToRole="Location" />
+          <NavigationProperty Name="Schedules" Relationship="Self.FK_Schedule_Comapany" FromRole="Company" ToRole="Schedule" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Status_Company" FromRole="Company" ToRole="Status" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="lid" />
+          </Key>
+          <Property Name="lid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="location1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="cid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Location_Company" FromRole="Location" ToRole="Company" />
+        </EntityType>
+        <EntityType Name="Notice">
+          <Key>
+            <PropertyRef Name="nid" />
+          </Key>
+          <Property Name="nid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uuid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="notice_date" Type="DateTime" Precision="0" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="exp_date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Notice_User" FromRole="Notice" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="pid" />
+          </Key>
+          <Property Name="pid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uuid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="post_date" Type="DateTime" Precision="0" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Post_User" FromRole="Post" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Register">
+          <Key>
+            <PropertyRef Name="rid" />
+          </Key>
+          <Property Name="rid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uuid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sid" Type="Int32" />
+          <Property Name="active" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Schedule" Relationship="Self.FK_Registers_Schedule" FromRole="Registers" ToRole="Schedule" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Registers_User" FromRole="Registers" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="sid" />
+          </Key>
+          <Property Name="sid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cid" Type="Int32" />
+          <Property Name="package" Type="Double" />
+          <Property Name="visit_date" Type="DateTime" Precision="0" />
+          <Property Name="deadline" Type="DateTime" Precision="0" />
+          <Property Name="min_cpi" Type="Double" />
+          <Property Name="backlog" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="vacancy" Type="Int32" />
+          <Property Name="hrname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Schedule_Comapany" FromRole="Schedule" ToRole="Company" />
+          <NavigationProperty Name="Registers" Relationship="Self.FK_Registers_Schedule" FromRole="Schedule" ToRole="Registers" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="stid" />
+          </Key>
+          <Property Name="stid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uuid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cid" Type="Int32" />
+          <Property Name="package" Type="Double" />
+          <Property Name="palced_date" Type="DateTime" Precision="0" />
+          <Property Name="placed" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Company" Relationship="Self.FK_Status_Company" FromRole="Status" ToRole="Company" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Status_User" FromRole="Status" ToRole="User" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="uuid" />
+          </Key>
+          <Property Name="uid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="uuid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="imageurl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dob" Type="DateTime" Precision="0" />
+          <Property Name="bid" Type="Int32" Nullable="false" />
+          <Property Name="rollno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="cpi" Type="Double" />
+          <Property Name="backlog" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="security_q_a" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="batch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Branch" Relationship="Self.FK_User_Branch" FromRole="User" ToRole="Branch" />
+          <NavigationProperty Name="Notices" Relationship="Self.FK_Notice_User" FromRole="User" ToRole="Notice" />
+          <NavigationProperty Name="Posts" Relationship="Self.FK_Post_User" FromRole="User" ToRole="Post" />
+          <NavigationProperty Name="Registers" Relationship="Self.FK_Registers_User" FromRole="User" ToRole="Registers" />
+          <NavigationProperty Name="Status" Relationship="Self.FK_Status_User" FromRole="User" ToRole="Status" />
+        </EntityType>
+        <Association Name="FK_User_Branch">
+          <End Role="Branch" Type="Self.Branch" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Branch">
+              <PropertyRef Name="bid" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="bid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Location_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Location" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="cid" />
+            </Principal>
+            <Dependent Role="Location">
+              <PropertyRef Name="cid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Schedule_Comapany">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="cid" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="cid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status_Company">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="Status" Type="Self.Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="cid" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="cid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Notice_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Notice" Type="Self.Notice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="uuid" />
+            </Principal>
+            <Dependent Role="Notice">
+              <PropertyRef Name="uuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Post_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Post" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="uuid" />
+            </Principal>
+            <Dependent Role="Post">
+              <PropertyRef Name="uuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registers_Schedule">
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="0..1" />
+          <End Role="Registers" Type="Self.Register" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Schedule">
+              <PropertyRef Name="sid" />
+            </Principal>
+            <Dependent Role="Registers">
+              <PropertyRef Name="sid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Registers_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Registers" Type="Self.Register" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="uuid" />
+            </Principal>
+            <Dependent Role="Registers">
+              <PropertyRef Name="uuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Status_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Status" Type="Self.Status" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="uuid" />
+            </Principal>
+            <Dependent Role="Status">
+              <PropertyRef Name="uuid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Branches" EntityType="Self.Branch" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="Notices" EntityType="Self.Notice" />
+          <EntitySet Name="Posts" EntityType="Self.Post" />
+          <EntitySet Name="Registers" EntityType="Self.Register" />
+          <EntitySet Name="Schedules" EntityType="Self.Schedule" />
+          <EntitySet Name="Status" EntityType="Self.Status" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_User_Branch" Association="Self.FK_User_Branch">
+            <End Role="Branch" EntitySet="Branches" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Location_Company" Association="Self.FK_Location_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Location" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Schedule_Comapany" Association="Self.FK_Schedule_Comapany">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_Company" Association="Self.FK_Status_Company">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Status" EntitySet="Status" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Notice_User" Association="Self.FK_Notice_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Notice" EntitySet="Notices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Post_User" Association="Self.FK_Post_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Post" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registers_Schedule" Association="Self.FK_Registers_Schedule">
+            <End Role="Schedule" EntitySet="Schedules" />
+            <End Role="Registers" EntitySet="Registers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Registers_User" Association="Self.FK_Registers_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Registers" EntitySet="Registers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Status_User" Association="Self.FK_Status_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Status" EntitySet="Status" />
+          </AssociationSet>
+          <EntitySet Name="MyViews" EntityType="DatabaseModel.MyView" />
+          <EntitySet Name="PostViews" EntityType="DatabaseModel.PostView" />
+          <EntitySet Name="BranchwiseByYearViews" EntityType="DatabaseModel.BranchwiseByYearView" />
+        </EntityContainer>
+        <EntityType Name="MyView">
+          <Key>
+            <PropertyRef Name="uuid" />
+          </Key>
+          <Property Name="uuid" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="mname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="rollno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="imageurl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="sid" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PostView">
+          <Key>
+            <PropertyRef Name="pid" />
+          </Key>
+          <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="pid" Type="Int32" Nullable="false" />
+          <Property Name="uuid" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="post_date" Type="DateTime" Precision="0" />
+          <Property Name="title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="BranchwiseByYearView">
+          <Key>
+            <PropertyRef Name="bid" />
+          </Key>
+          <Property Name="bname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="bid" Type="Int32" Nullable="false" />
+          <Property Name="batch" Type="Int32" />
+          <Property Name="total" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
+          <EntitySetMapping Name="Branches">
+            <EntityTypeMapping TypeName="DatabaseModel.Branch">
+              <MappingFragment StoreEntitySet="Branch">
+                <ScalarProperty Name="bid" ColumnName="bid" />
+                <ScalarProperty Name="bname" ColumnName="bname" />
+                <ScalarProperty Name="hod" ColumnName="hod" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="DatabaseModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="cname" ColumnName="cname" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="website" ColumnName="website" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="DatabaseModel.Location">
+              <MappingFragment StoreEntitySet="Location">
+                <ScalarProperty Name="lid" ColumnName="lid" />
+                <ScalarProperty Name="location1" ColumnName="location" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Notices">
+            <EntityTypeMapping TypeName="DatabaseModel.Notice">
+              <MappingFragment StoreEntitySet="Notice">
+                <ScalarProperty Name="nid" ColumnName="nid" />
+                <ScalarProperty Name="uuid" ColumnName="uuid" />
+                <ScalarProperty Name="notice_date" ColumnName="notice_date" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="exp_date" ColumnName="exp_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="DatabaseModel.Post">
+              <MappingFragment StoreEntitySet="Post">
+                <ScalarProperty Name="pid" ColumnName="pid" />
+                <ScalarProperty Name="uuid" ColumnName="uuid" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="post_date" ColumnName="post_date" />
+                <ScalarProperty Name="title" ColumnName="title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Registers">
+            <EntityTypeMapping TypeName="DatabaseModel.Register">
+              <MappingFragment StoreEntitySet="Registers">
+                <ScalarProperty Name="rid" ColumnName="rid" />
+                <ScalarProperty Name="uuid" ColumnName="uuid" />
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedules">
+            <EntityTypeMapping TypeName="DatabaseModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="package" ColumnName="package" />
+                <ScalarProperty Name="visit_date" ColumnName="visit_date" />
+                <ScalarProperty Name="deadline" ColumnName="deadline" />
+                <ScalarProperty Name="min_cpi" ColumnName="min_cpi" />
+                <ScalarProperty Name="backlog" ColumnName="backlog" />
+                <ScalarProperty Name="vacancy" ColumnName="vacancy" />
+                <ScalarProperty Name="hrname" ColumnName="hrname" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="DatabaseModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="stid" ColumnName="stid" />
+                <ScalarProperty Name="uuid" ColumnName="uuid" />
+                <ScalarProperty Name="cid" ColumnName="cid" />
+                <ScalarProperty Name="package" ColumnName="package" />
+                <ScalarProperty Name="palced_date" ColumnName="palced_date" />
+                <ScalarProperty Name="placed" ColumnName="placed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DatabaseModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="uuid" ColumnName="uuid" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="mname" ColumnName="mname" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="imageurl" ColumnName="imageurl" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="dob" ColumnName="dob" />
+                <ScalarProperty Name="bid" ColumnName="bid" />
+                <ScalarProperty Name="rollno" ColumnName="rollno" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="cpi" ColumnName="cpi" />
+                <ScalarProperty Name="backlog" ColumnName="backlog" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="security_q_a" ColumnName="security_q_a" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="batch" ColumnName="batch" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MyViews">
+            <EntityTypeMapping TypeName="DatabaseModel.MyView">
+              <MappingFragment StoreEntitySet="MyView">
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="imageurl" ColumnName="imageurl" />
+                <ScalarProperty Name="rollno" ColumnName="rollno" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="mname" ColumnName="mname" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+                <ScalarProperty Name="uuid" ColumnName="uuid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostViews">
+            <EntityTypeMapping TypeName="DatabaseModel.PostView">
+              <MappingFragment StoreEntitySet="PostView">
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="post_date" ColumnName="post_date" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="uuid" ColumnName="uuid" />
+                <ScalarProperty Name="pid" ColumnName="pid" />
+                <ScalarProperty Name="lname" ColumnName="lname" />
+                <ScalarProperty Name="fname" ColumnName="fname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BranchwiseByYearViews">
+            <EntityTypeMapping TypeName="DatabaseModel.BranchwiseByYearView">
+              <MappingFragment StoreEntitySet="BranchwiseByYearView">
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="batch" ColumnName="batch" />
+                <ScalarProperty Name="bid" ColumnName="bid" />
+                <ScalarProperty Name="bname" ColumnName="bname" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
